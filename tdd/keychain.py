@@ -29,7 +29,7 @@ class KeyChain:
             chains = files('tdd.chains')
             ca_file = chains.joinpath(ca_cn + ".der")
             if not ca_file.is_file():
-                self.download_ca(ca_cn)
+                raise KeyError(ca_cn)
             
             with ca_file.open("rb") as fd:
                 ca = x509.load_der_x509_certificate(fd.read())
@@ -38,8 +38,7 @@ class KeyChain:
         chains = files('tdd.chains')
         chain_file = chains.joinpath(name + ".der")
         if not chain_file.is_file():
-            # Download certificates
-            self.download_certs(ca_cn)
+            raise KeyError((ca_cn, cert_cn))
         with chain_file.open("rb") as fd:
             cert = x509.load_der_x509_certificate(fd.read())
         
@@ -54,7 +53,7 @@ class KeyChain:
         blob = blob.split(end)[0]
         certs = blob.split(boundary)
 
-        for _, c in enumerate(certs):
+        for c in certs:
             if c.endswith(b'\r\n'):
                 c = c[:-2]
             if not c:
