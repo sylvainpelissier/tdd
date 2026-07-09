@@ -1,0 +1,37 @@
+[build-system]
+requires = ["uv_build>=0.7,<1.0"]
+build-backend = "uv_build"
+
+[project]
+name = "tdd"
+version = "0.3"
+description = "2D-Doc toolsuite"
+readme = "readme.rst"
+license = "MIT"
+authors = [
+    { name = "Nicolas Pouillon", email = "nipo@ssji.net" },
+]
+requires-python = ">=3.9"
+dependencies = [
+    "cryptography",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Text Processing :: General",
+]
+
+[project.urls]
+Homepage = "https://github.com/nipo/tdd"
+
+[project.optional-dependencies]
+fetch = ["lxml", "requests"]
+dev = ["pytest", "pyyaml"]
+
+[project.scripts]
+tdd-fetch-chains = "tdd.fetch_chains:main"
+
+[tool.uv.build-backend]
+module-name = "tdd"
+module-root = ""
