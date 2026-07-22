@@ -29,8 +29,8 @@ classifiers = [
 Homepage = "https://github.com/nipo/tdd"
 
 [project.optional-dependencies]
-fetch = ["lxml", "requests"]
-dev = ["pytest", "pyyaml"]
+fetch = ["lxml", "requests", "xmlsec"]
+dev = ["tdd[fetch]", "pytest", "pyyaml"]
 
 [project.scripts]
 tdd-fetch-chains = "tdd.fetch_chains:main"
