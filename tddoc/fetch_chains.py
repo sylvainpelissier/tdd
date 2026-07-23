@@ -39,9 +39,10 @@ import xmlsec
 
 TSL_NS = {"tsl": "http://uri.etsi.org/02231/v2#"}
 TSL_DS = {"ds": "http://www.w3.org/2000/09/xmldsig#"}
-HEADERS = {'User-Agent': 'tddoc'}
+HEADERS = {"User-Agent": "tddoc"}
 TSL_URL = "https://pub.ants.gouv.fr/2D-DOC/V1/PRD/01_TSL/tsl_signed.xml"
 TSL_ROOT = "ca_racine_antsav3_2.cer"
+
 
 class ChainFetcher:
     def __init__(self, output_dir=None):
@@ -52,7 +53,7 @@ class ChainFetcher:
 
     def _load_tsl(self):
         if self.tree is None:
-            tsl_path = files('tddoc.tsl').joinpath("tsl_signed.xml")
+            tsl_path = files("tddoc.tsl").joinpath("tsl_signed.xml")
             with tsl_path.open("rb") as f:
                 self.tree = etree.parse(f)
         return self.tree
@@ -87,10 +88,14 @@ class ChainFetcher:
         Raises if either fails.
         """
         tree = etree.fromstring(data)
-        leaf = x509.load_der_x509_certificate(b64decode(tree.xpath(
-            ".//ds:Signature/ds:KeyInfo/ds:X509Data/ds:X509Certificate/text()",
-            namespaces=TSL_DS,
-        )[0]))
+        leaf = x509.load_der_x509_certificate(
+            b64decode(
+                tree.xpath(
+                    ".//ds:Signature/ds:KeyInfo/ds:X509Data/ds:X509Certificate/text()",
+                    namespaces=TSL_DS,
+                )[0]
+            )
+        )
 
         ctx = xmlsec.SignatureContext()
         ctx.key = xmlsec.Key.from_memory(
@@ -99,7 +104,7 @@ class ChainFetcher:
         ctx.verify(xmlsec.tree.find_node(tree, xmlsec.constants.NodeSignature))
 
         root = x509.load_der_x509_certificate(
-            files('tddoc.tsl').joinpath(TSL_ROOT).read_bytes()
+            files("tddoc.tsl").joinpath(TSL_ROOT).read_bytes()
         )
         intermediate = x509.load_der_x509_certificate(
             self._get(self._aia_ca_issuers(leaf))
@@ -117,8 +122,7 @@ class ChainFetcher:
             .store(Store([root]))
             .time(datetime.now(timezone.utc))
             .extension_policies(
-                ca_policy=ExtensionPolicy.webpki_defaults_ca(),
-                ee_policy=ee_policy
+                ca_policy=ExtensionPolicy.webpki_defaults_ca(), ee_policy=ee_policy
             )
             .build_client_verifier()
         )
@@ -130,7 +134,9 @@ class ChainFetcher:
         current_version = self._tsl_version(self._load_tsl())
         data = self._get(TSL_URL)
         latest_version = self._tsl_version(etree.fromstring(data))
-        print(f"Local TSL version is {current_version}, latest TSL version is {latest_version}")
+        print(
+            f"Local TSL version is {current_version}, latest TSL version is {latest_version}"
+        )
 
         if current_version >= latest_version:
             return
@@ -140,7 +146,7 @@ class ChainFetcher:
         subject_cn = leaf.subject.get_attributes_for_oid(NameOID.COMMON_NAME)[0].value
         print(f"TSL signature verified, signed by {subject_cn!r}")
 
-        tsl_path = Path(str(files('tddoc.tsl').joinpath("tsl_signed.xml")))
+        tsl_path = Path(str(files("tddoc.tsl").joinpath("tsl_signed.xml")))
         tsl_path.write_bytes(data)
         self.tree = None
         print(f"Updated {tsl_path} to version {latest_version}")
@@ -191,15 +197,15 @@ class ChainFetcher:
         parts = blob.split(boundary)
         certs = []
         for part in parts:
-            if part.endswith(b'\r\n'):
+            if part.endswith(b"\r\n"):
                 part = part[:-2]
             if not part:
                 continue
-            header, data = part.split(b'\r\n\r\n', 1)
-            header_lines = header.split(b'\r\n')
+            header, data = part.split(b"\r\n\r\n", 1)
+            header_lines = header.split(b"\r\n")
             ct = None
             for h in header_lines:
-                k, v = str(h, 'utf-8').split(": ", 1)
+                k, v = str(h, "utf-8").split(": ", 1)
                 if k.lower() == "content-type":
                     ct = v
             if ct == "application/pkix-cert":
@@ -221,7 +227,7 @@ class ChainFetcher:
         # Download and unbundle leaf certs
         uri = self._get_bundle_uri(ca_name)
         print(f"Downloading {uri}")
-        
+
         response = requests.get(uri, headers=HEADERS)
         response.raise_for_status()
 
@@ -232,7 +238,9 @@ class ChainFetcher:
             except ValueError:
                 continue
             issuer_cn = cert.issuer.get_attributes_for_oid(NameOID.COMMON_NAME)[0].value
-            subject_cn = cert.subject.get_attributes_for_oid(NameOID.COMMON_NAME)[0].value
+            subject_cn = cert.subject.get_attributes_for_oid(NameOID.COMMON_NAME)[
+                0
+            ].value
             filename = f"{issuer_cn}_{subject_cn}.der"
             self._save_cert_der(
                 cert.public_bytes(encoding=serialization.Encoding.DER),
@@ -253,7 +261,8 @@ def main(args=None):
         description="Download 2D-Doc certificate chains from ANTS TSL",
     )
     parser.add_argument(
-        "-o", "--output-dir",
+        "-o",
+        "--output-dir",
         type=Path,
         default=None,
         help="Output directory (default: ~/.config/tddoc/chains/)",

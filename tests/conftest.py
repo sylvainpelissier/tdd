@@ -1,9 +1,9 @@
 """
 Pytest fixtures for 2D-Doc specification tests.
 """
+
 import pytest
 from pathlib import Path
-import yaml
 
 
 def discover_test_cases(samples_dir: Path):
@@ -37,4 +37,5 @@ def keychain():
     Load the internal keychain with bundled certificates.
     """
     from tddoc.keychain import internal
+
     return internal(include_test=True, check_expiry=False)

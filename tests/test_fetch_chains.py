@@ -1,15 +1,15 @@
 """
 Tests for ChainFetcher.verify_tsl signature verification.
 """
+
 import pytest
 import xmlsec
-from base64 import b64decode
 from importlib.resources import files
 from pathlib import Path
 
 from cryptography import x509
 from cryptography.x509.oid import NameOID
-from tddoc.fetch_chains import ChainFetcher, TSL_DS
+from tddoc.fetch_chains import ChainFetcher
 
 # The intermediate certificate that verify_tsl would otherwise fetch over the
 # network from the leaf's AIA caIssuers URL, bundled so the tests stay offline.

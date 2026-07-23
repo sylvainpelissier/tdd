@@ -6,37 +6,50 @@ __all__ = ["Header"]
 
 EPOCH = date(2000, 1, 1)
 
+
 def date_parse_text(code):
     if code == "FFFF":
         return None
-    return EPOCH + timedelta(days = int(code, 16))
+    return EPOCH + timedelta(days=int(code, 16))
+
 
 def date_parse_bin(code):
     if code == b"FFFF":
         return None
     v = int.from_bytes(code, "big")
-    return date(year = v % 10000,
-                month = v // 1000000,
-                day = (v // 10000) % 100)
+    return date(year=v % 10000, month=v // 1000000, day=(v // 10000) % 100)
 
-def date_encode(d, mode = "c40"):
+
+def date_encode(d, mode="c40"):
     if mode == "c40":
-        if d == None:
+        if d is None:
             return "FFFF"
-        return f'{(d - EPOCH).days:04X}'
+        return f"{(d - EPOCH).days:04X}"
     elif mode == "bin":
-        if d == None:
+        if d is None:
             return b"FFFF"
         v = d.month * 1000000 + d.day * 10000 + d.year
-        return v.to_bytes(3, 'big')
+        return v.to_bytes(3, "big")
     else:
         raise ValueError(mode)
+
 
 class Header:
     """
     2D-Doc header
     """
-    def __init__(self, version, ca_id, cert_id, emit_date, sign_date, doc_type_id, perimeter_id = '01', country_id = "FR"):
+
+    def __init__(
+        self,
+        version,
+        ca_id,
+        cert_id,
+        emit_date,
+        sign_date,
+        doc_type_id,
+        perimeter_id="01",
+        country_id="FR",
+    ):
         self.version = version
         self.ca_id = ca_id
         self.cert_id = cert_id
@@ -65,7 +78,7 @@ class Header:
             perimeter_id = int(code[22:24]) if version >= 3 else 1
             country_id = code[24:26] if version >= 4 else "FR"
 
-        elif isinstance(code, bytes) and code[0] == 0xdc:
+        elif isinstance(code, bytes) and code[0] == 0xDC:
             version = code[1]
             if version != 4:
                 raise ValueError("Unsupported 2D-Doc version")
@@ -81,14 +94,15 @@ class Header:
         else:
             raise ValueError("Not a 2D-Doc")
 
-        return cls(version = version,
-                   ca_id = ca_id,
-                   cert_id = cert_id,
-                   emit_date = emit_date,
-                   sign_date = sign_date,
-                   doc_type_id = doc_type_id,
-                   perimeter_id = perimeter_id,
-                   country_id = country_id,
+        return cls(
+            version=version,
+            ca_id=ca_id,
+            cert_id=cert_id,
+            emit_date=emit_date,
+            sign_date=sign_date,
+            doc_type_id=doc_type_id,
+            perimeter_id=perimeter_id,
+            country_id=country_id,
         )
 
     @property
@@ -122,15 +136,18 @@ class Header:
         if self.mode == "c40":
             return f"DC{self.version:02d}{self.ca_id}{self.cert_id}{date_encode(self.emit_date)}{date_encode(self.sign_date)}{self.doc_type_id}{format(self.perimeter_id, '02d') if self.version >= 3 else ''}{self.country_id if self.version >= 4 else ''}"
         elif self.mode == "bin":
-            return b'\xdc\x04' \
-                + c40.format(self.country_id) \
-                + c40.format(self.ca_id + self.cert_id) \
-                + date_encode(self.emit_date, "bin") \
-                + date_encode(self.sign_date, "bin") \
-                + bytes([self.doc_type_id]) \
+            return (
+                b"\xdc\x04"
+                + c40.format(self.country_id)
+                + c40.format(self.ca_id + self.cert_id)
+                + date_encode(self.emit_date, "bin")
+                + date_encode(self.sign_date, "bin")
+                + bytes([self.doc_type_id])
                 + self.perimeter_id.to_bytes(2, "big")
+            )
 
     def doc_type(self):
         "Retrieve document type definition from internal database"
         from .data_definition import c40
+
         return c40.doctype_get(self.perimeter_id, self.doc_type_id)
