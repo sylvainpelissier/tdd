@@ -7,6 +7,8 @@ Usage:
 Downloads certificate chains from the ANTS TSL (Trust Service List)
 and saves individual DER files.
 
+If the TSL is outdated a the new TSL is dowloaded and its signature is verified.
+
 Default output: ~/.config/tdd/chains/
 Use -o tdd/chains to update the bundled certificates.
 If no CA names are specified, downloads all available chains.
@@ -17,13 +19,29 @@ import argparse
 from base64 import b64decode
 from cryptography import x509
 from cryptography.hazmat.primitives import serialization
-from cryptography.x509.oid import NameOID
+from cryptography.x509.oid import (
+    AuthorityInformationAccessOID,
+    ExtensionOID,
+    NameOID,
+)
+from cryptography.x509.verification import (
+    Criticality,
+    ExtensionPolicy,
+    PolicyBuilder,
+    Store,
+)
+from datetime import datetime, timezone
 from importlib.resources import files
 from lxml import etree
 from pathlib import Path
 import requests
+import xmlsec
 
 TSL_NS = {"tsl": "http://uri.etsi.org/02231/v2#"}
+TSL_DS = {"ds": "http://www.w3.org/2000/09/xmldsig#"}
+HEADERS = {'User-Agent': 'tdd'}
+TSL_URL = "https://pub.ants.gouv.fr/2D-DOC/V1/PRD/01_TSL/tsl_signed.xml"
+TSL_ROOT = "ca_racine_antsav3_2.cer"
 
 class ChainFetcher:
     def __init__(self, output_dir=None):
@@ -34,10 +52,98 @@ class ChainFetcher:
 
     def _load_tsl(self):
         if self.tree is None:
-            tsl_path = files('tdd.chains').joinpath("tsl_signed.xml")
+            tsl_path = files('tdd.tsl').joinpath("tsl_signed.xml")
             with tsl_path.open("rb") as f:
                 self.tree = etree.parse(f)
         return self.tree
+
+    @staticmethod
+    def _get(url):
+        response = requests.get(url, headers=HEADERS, timeout=30)
+        response.raise_for_status()
+        return response.content
+
+    @staticmethod
+    def _aia_ca_issuers(cert):
+        """Returns the URL of the issuer's certificate, as advertised in the cert's AIA extension."""
+        aia = cert.extensions.get_extension_for_oid(
+            ExtensionOID.AUTHORITY_INFORMATION_ACCESS
+        ).value
+        return next(
+            ad.access_location.value
+            for ad in aia
+            if ad.access_method == AuthorityInformationAccessOID.CA_ISSUERS
+            and isinstance(ad.access_location, x509.UniformResourceIdentifier)
+        )
+
+    @staticmethod
+    def _tsl_version(tree):
+        return int(tree.xpath("//tsl:TSLSequenceNumber/text()", namespaces=TSL_NS)[0])
+
+    def verify_tsl(self, data):
+        """
+        Verify a TSL and return the certificate that signed it.
+        Check the XML and the certificate chain.
+        Raises if either fails.
+        """
+        tree = etree.fromstring(data)
+        leaf = x509.load_der_x509_certificate(b64decode(tree.xpath(
+            ".//ds:Signature/ds:KeyInfo/ds:X509Data/ds:X509Certificate/text()",
+            namespaces=TSL_DS,
+        )[0]))
+
+        ctx = xmlsec.SignatureContext()
+        ctx.key = xmlsec.Key.from_memory(
+            leaf.public_bytes(serialization.Encoding.DER), xmlsec.KeyFormat.CERT_DER
+        )
+        ctx.verify(xmlsec.tree.find_node(tree, xmlsec.constants.NodeSignature))
+
+        root = x509.load_der_x509_certificate(
+            files('tdd.tsl').joinpath(TSL_ROOT).read_bytes()
+        )
+        intermediate = x509.load_der_x509_certificate(
+            self._get(self._aia_ca_issuers(leaf))
+        )
+
+        # A document signing certificate carries neither a SubjectAlternativeName nor an
+        # ExtendedKeyUsage, both of which the default (web PKI) end-entity profile requires.
+        ee_policy = (
+            ExtensionPolicy.webpki_defaults_ee()
+            .may_be_present(x509.SubjectAlternativeName, Criticality.AGNOSTIC, None)
+            .may_be_present(x509.ExtendedKeyUsage, Criticality.AGNOSTIC, None)
+        )
+        verifier = (
+            PolicyBuilder()
+            .store(Store([root]))
+            .time(datetime.now(timezone.utc))
+            .extension_policies(
+                ca_policy=ExtensionPolicy.webpki_defaults_ca(),
+                ee_policy=ee_policy
+            )
+            .build_client_verifier()
+        )
+        verifier.verify(leaf, [intermediate])
+        return leaf
+
+    def check_tsl_update(self):
+        """Download the published TSL and replace the bundled one if it is newer."""
+        current_version = self._tsl_version(self._load_tsl())
+        data = self._get(TSL_URL)
+        latest_version = self._tsl_version(etree.fromstring(data))
+        print(f"Local TSL version is {current_version}, latest TSL version is {latest_version}")
+
+        if current_version >= latest_version:
+            return
+
+        print("Verifying new TSL signature")
+        leaf = self.verify_tsl(data)
+        subject_cn = leaf.subject.get_attributes_for_oid(NameOID.COMMON_NAME)[0].value
+        print(f"TSL signature verified, signed by {subject_cn!r}")
+
+        tsl_path = Path(str(files('tdd.tsl').joinpath("tsl_signed.xml")))
+        tsl_path.write_bytes(data)
+        self.tree = None
+        print(f"Updated {tsl_path} to version {latest_version}")
 
     def available_cas(self):
         tree = self._load_tsl()
@@ -115,8 +221,8 @@ class ChainFetcher:
         # Download and unbundle leaf certs
         uri = self._get_bundle_uri(ca_name)
         print(f"Downloading {uri}")
-        headers = {'User-Agent': 'tdd'}
-        response = requests.get(uri, headers=headers)
+        
+        response = requests.get(uri, headers=HEADERS)
         response.raise_for_status()
 
         cert_ders = self._unbundle_multipart(response.content)
@@ -161,6 +267,8 @@ def main(args=None):
 
     fetcher = ChainFetcher(output_dir=parsed.output_dir)
     print(f"Output directory: {fetcher.output_dir}")
+    fetcher.check_tsl_update()
+
     if parsed.ca_names:
         for ca_name in parsed.ca_names:
             fetcher.fetch(ca_name)

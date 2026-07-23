@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><tsl:TrustServiceStatusList xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ecc="http://uri.etsi.org/TrstSvc/SvcInfoExt/eSigDir-1999-93-EC-TrustedList/#" xmlns:tsl="http://uri.etsi.org/02231/v2#" xmlns:tslx="http://uri.etsi.org/02231/v2/additionaltypes#" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" TSLTag="http://uri.etsi.org/02231/TSLTag">
 	<tsl:SchemeInformation>
 		<tsl:TSLVersionIdentifier>5</tsl:TSLVersionIdentifier>
-		<tsl:TSLSequenceNumber>22</tsl:TSLSequenceNumber>
+		<tsl:TSLSequenceNumber>23</tsl:TSLSequenceNumber>
 		<tsl:TSLType>http://uri.etsi.org/TrstSvc/eSigDir-1999-93-EC-TrustedList/TSLType/generic</tsl:TSLType>
 		<tsl:SchemeOperatorName>
-			<tsl:Name xml:lang="fr">Agence Nationale des Titres Sécurisés</tsl:Name>
+			<tsl:Name xml:lang="fr">FRANCE TITRES (ANTS)</tsl:Name>
+			<tsl:Name xml:lang="en">FRANCE TITRES (ANTS)</tsl:Name>
 		</tsl:SchemeOperatorName>
 		<tsl:SchemeOperatorAddress>
 			<tsl:PostalAddresses>
 				<tsl:PostalAddress xml:lang="fr">
-					<tsl:StreetAddress>101 rue de Tolbiac</tsl:StreetAddress>
-					<tsl:Locality>PARIS CEDEX 13</tsl:Locality>
-					<tsl:StateOrProvince>France</tsl:StateOrProvince>
+					<tsl:StreetAddress>101, RUE TOLBIAC</tsl:StreetAddress>
+					<tsl:Locality>PARIS</tsl:Locality>
+					<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 					<tsl:PostalCode>75013</tsl:PostalCode>
 					<tsl:CountryName>FR</tsl:CountryName>
 				</tsl:PostalAddress>
 				<tsl:PostalAddress xml:lang="en">
-					<tsl:StreetAddress>101 rue de Tolbiac</tsl:StreetAddress>
-					<tsl:Locality>PARIS CEDEX 13</tsl:Locality>
-					<tsl:StateOrProvince>France</tsl:StateOrProvince>
+					<tsl:StreetAddress>101, RUE TOLBIAC</tsl:StreetAddress>
+					<tsl:Locality>PARIS</tsl:Locality>
+					<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 					<tsl:PostalCode>75013</tsl:PostalCode>
 					<tsl:CountryName>FR</tsl:CountryName>
 				</tsl:PostalAddress>
@@ -28,8 +29,8 @@
 			</tsl:ElectronicAddress>
 		</tsl:SchemeOperatorAddress>
 		<tsl:SchemeName>
-			<tsl:Name xml:lang="en">FR:2D-Doc</tsl:Name>
-			<tsl:Name xml:lang="fr">FR:2D-Doc</tsl:Name>
+			<tsl:Name xml:lang="fr">NIVEAU 3 : CHAINE DE CONFIANCE 2D-DOC V1</tsl:Name>
+			<tsl:Name xml:lang="en">LEVEL 3 : TRUST CHAIN 2D-DOC V1</tsl:Name>
 		</tsl:SchemeName>
 		<tsl:SchemeInformationURI>
 			<tsl:URI xml:lang="fr">https://ants.gouv.fr/nos-missions/les-solutions-numeriques/2d-doc</tsl:URI>
@@ -41,14 +42,14 @@
 			<tsl:URI xml:lang="fr">http://uri.etsi.org/TrstSvc/eSigDir-1999-93-EC-TrustedList/schemerules/FR</tsl:URI>
 		</tsl:SchemeTypeCommunityRules>
 		<tsl:SchemeTerritory>FR</tsl:SchemeTerritory>
-		<tsl:PolicyOrLegalNotice>
-			<tsl:TSLLegalNotice xml:lang="en">https://ants.gouv.fr/nos-missions/les-solutions-numeriques/2d-doc</tsl:TSLLegalNotice>
-			<tsl:TSLLegalNotice xml:lang="fr">https://ants.gouv.fr/nos-missions/les-solutions-numeriques/2d-doc</tsl:TSLLegalNotice>
-		</tsl:PolicyOrLegalNotice>
+		<PolicyOrLegalNotice>
+			<TSLLegalNotice xml:lang="fr">Ce fichier est administré par France Titres (ANTS). Plus de détails sur https://ants.gouv.fr/nos-missions/les-solutions-numeriques/2d-doc</TSLLegalNotice>
+			<TSLLegalNotice xml:lang="en">This file is administrated by France Titres (ANTS). More Details at https://ants.gouv.fr/nos-missions/les-solutions-numeriques/2d-doc</TSLLegalNotice>
+		</PolicyOrLegalNotice>
 		<tsl:HistoricalInformationPeriod>3653</tsl:HistoricalInformationPeriod>
-		<tsl:ListIssueDateTime>2025-08-25T11:00:00Z</tsl:ListIssueDateTime>
+		<tsl:ListIssueDateTime>2026-05-11T14:00:00Z</tsl:ListIssueDateTime>
 		<tsl:NextUpdate>
-			<tsl:dateTime>2026-02-25T11:00:00Z</tsl:dateTime>
+			<tsl:dateTime>2027-05-11T14:00:00Z</tsl:dateTime>
 		</tsl:NextUpdate>
 		<tsl:DistributionPoints>
 			<tsl:URI>https://pub.ants.gouv.fr/2D-DOC/V1/PRD/01_TSL/tsl_signed.xml</tsl:URI>
@@ -58,32 +59,33 @@
 		<tsl:TrustServiceProvider>
 			<tsl:TSPInformation>
 				<tsl:TSPName>
-					<tsl:Name xml:lang="en">IDnow SAS</tsl:Name>
-					<tsl:Name xml:lang="fr">IDnow SAS</tsl:Name>
+					<tsl:Name xml:lang="fr">IDNOW SAS</tsl:Name>
+					<tsl:Name xml:lang="en">IDNOW SAS</tsl:Name>
 				</tsl:TSPName>
 				<tsl:TSPTradeName>
-					<tsl:Name xml:lang="en">FR01</tsl:Name>
 					<tsl:Name xml:lang="fr">FR01</tsl:Name>
+					<tsl:Name xml:lang="en">FR01</tsl:Name>
 				</tsl:TSPTradeName>
 				<tsl:TSPAddress>
 					<tsl:PostalAddresses>
 						<tsl:PostalAddress xml:lang="fr">
-							<tsl:StreetAddress>122, rue Robert Keller</tsl:StreetAddress>
-							<tsl:Locality>Cesson Sevigne</tsl:Locality>
-							<tsl:StateOrProvince>France</tsl:StateOrProvince>
+							<tsl:StreetAddress>122, RUE ROBERT KELLER</tsl:StreetAddress>
+							<tsl:Locality>CESSON SEVIGNE</tsl:Locality>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 							<tsl:PostalCode>35510</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
 						<tsl:PostalAddress xml:lang="en">
-							<tsl:StreetAddress>122, rue Robert Keller</tsl:StreetAddress>
-							<tsl:Locality>Cesson Sevigne</tsl:Locality>
-							<tsl:StateOrProvince>France</tsl:StateOrProvince>
+							<tsl:StreetAddress>122, RUE ROBERT KELLER</tsl:StreetAddress>
+							<tsl:Locality>CESSON SEVIGNE</tsl:Locality>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 							<tsl:PostalCode>35510</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
 					</tsl:PostalAddresses>
 					<tsl:ElectronicAddress>
 						<tsl:URI xml:lang="fr">mailto:contact@idnow.io</tsl:URI>
+						<tsl:URI xml:lang="en">mailto:contact@idnow.io</tsl:URI>
 					</tsl:ElectronicAddress>
 				</tsl:TSPAddress>
 				<tsl:TSPInformationURI>
@@ -96,8 +98,8 @@
 					<tsl:ServiceInformation>
 						<tsl:ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/CA/PKC</tsl:ServiceTypeIdentifier>
 						<tsl:ServiceName>
-							<tsl:Name xml:lang="en">IDnow SAS FR01 2D-Doc Barcode signature</tsl:Name>
-							<tsl:Name xml:lang="fr">IDnow SAS FR01 2D-Doc Barcode signature</tsl:Name>
+							<tsl:Name xml:lang="fr">IDNOW SAS - FR01 2D-DOC Cachet Electronique Visible (CEV) Signature</tsl:Name>
+							<tsl:Name xml:lang="en">IDNOW SAS - FR01 2D-DOC Visible Digital Seal (VDS) Signature</tsl:Name>
 						</tsl:ServiceName>
 						<tsl:ServiceDigitalIdentity>
 							<tsl:DigitalId>
@@ -115,35 +117,36 @@
 		<tsl:TrustServiceProvider>
 			<tsl:TSPInformation>
 				<tsl:TSPName>
-					<tsl:Name xml:lang="en">Dhimyotis</tsl:Name>
-					<tsl:Name xml:lang="fr">Dhimyotis</tsl:Name>
+					<tsl:Name xml:lang="fr">CERTIGNA (CERTIGNA - DHIMYOTIS)</tsl:Name>
+					<tsl:Name xml:lang="en">CERTIGNA (CERTIGNA - DHIMYOTIS)</tsl:Name>
 				</tsl:TSPName>
 				<tsl:TSPTradeName>
-					<tsl:Name xml:lang="en">FR03</tsl:Name>
 					<tsl:Name xml:lang="fr">FR03</tsl:Name>
+					<tsl:Name xml:lang="en">FR03</tsl:Name>
 				</tsl:TSPTradeName>
 				<tsl:TSPAddress>
 					<tsl:PostalAddresses>
-						<tsl:PostalAddress xml:lang="en">
-							<tsl:StreetAddress>20, allée de la Raperie</tsl:StreetAddress>
-							<tsl:Locality>Villeneuve d’Ascq</tsl:Locality>
+						<tsl:PostalAddress xml:lang="fr">
+							<tsl:StreetAddress>20, ALLÉE DE LA RAPERIE</tsl:StreetAddress>
+							<tsl:Locality>VILLENEUVE D’ASCQ</tsl:Locality>
 							<tsl:PostalCode>59650</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
-						<tsl:PostalAddress xml:lang="fr">
-							<tsl:StreetAddress>20, allée de la Raperie</tsl:StreetAddress>
-							<tsl:Locality>Villeneuve d’Ascq</tsl:Locality>
+						<tsl:PostalAddress xml:lang="en">
+							<tsl:StreetAddress>20, ALLÉE DE LA RAPERIE</tsl:StreetAddress>
+							<tsl:Locality>VILLENEUVE D’ASCQ</tsl:Locality>
 							<tsl:PostalCode>59650</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
 					</tsl:PostalAddresses>
 					<tsl:ElectronicAddress>
 						<tsl:URI xml:lang="fr">mailto:contact@certigna.fr</tsl:URI>
+						<tsl:URI xml:lang="en">mailto:contact@certigna.fr</tsl:URI>
 					</tsl:ElectronicAddress>
 				</tsl:TSPAddress>
 				<tsl:TSPInformationURI>
-					<tsl:URI xml:lang="en">http://certificates.certigna.fr/search.php?iHash=xvNLC1KMs03t%2FgxzdBYParPnf%2BM</tsl:URI>
 					<tsl:URI xml:lang="fr">http://certificates.certigna.fr/search.php?iHash=xvNLC1KMs03t%2FgxzdBYParPnf%2BM</tsl:URI>
+					<tsl:URI xml:lang="en">http://certificates.certigna.fr/search.php?iHash=xvNLC1KMs03t%2FgxzdBYParPnf%2BM</tsl:URI>
 				</tsl:TSPInformationURI>
 			</tsl:TSPInformation>
 			<tsl:TSPServices>
@@ -151,8 +154,8 @@
 					<tsl:ServiceInformation>
 						<tsl:ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/CA/PKC</tsl:ServiceTypeIdentifier>
 						<tsl:ServiceName>
-							<tsl:Name xml:lang="en">DHIMYOTIS FR03 2D-Doc Barcode signature</tsl:Name>
-							<tsl:Name xml:lang="fr">DHIMYOTIS FR03 2D-Doc Barcode signature</tsl:Name>
+							<tsl:Name xml:lang="fr">CERTIGNA (CERTIGNA - DHIMYOTIS) - FR03 2D-DOC Cachet Electronique Visible (CEV) Signature</tsl:Name>
+							<tsl:Name xml:lang="en">CERTIGNA (CERTIGNA - DHIMYOTIS) - FR03 2D-DOC Visible Digital Seal (VDS) Signature</tsl:Name>
 						</tsl:ServiceName>
 						<tsl:ServiceDigitalIdentity>
 							<tsl:DigitalId>
@@ -170,37 +173,38 @@
 		<tsl:TrustServiceProvider>
 			<tsl:TSPInformation>
 				<tsl:TSPName>
-					<tsl:Name xml:lang="en">IDnow SAS</tsl:Name>
-					<tsl:Name xml:lang="fr">IDnow SAS</tsl:Name>
+					<tsl:Name xml:lang="fr">IDNOW SAS</tsl:Name>
+					<tsl:Name xml:lang="en">IDNOW SAS</tsl:Name>
 				</tsl:TSPName>
 				<tsl:TSPTradeName>
-					<tsl:Name xml:lang="en">FR04</tsl:Name>
 					<tsl:Name xml:lang="fr">FR04</tsl:Name>
+					<tsl:Name xml:lang="en">FR04</tsl:Name>
 				</tsl:TSPTradeName>
 				<tsl:TSPAddress>
 					<tsl:PostalAddresses>
-						<tsl:PostalAddress xml:lang="en">
-							<tsl:StreetAddress>122, rue Robert Keller</tsl:StreetAddress>
-							<tsl:Locality>Cesson Sevigne</tsl:Locality>
-							<tsl:StateOrProvince>France</tsl:StateOrProvince>
+						<tsl:PostalAddress xml:lang="fr">
+							<tsl:StreetAddress>122, RUE ROBERT KELLER</tsl:StreetAddress>
+							<tsl:Locality>CESSON SEVIGNE</tsl:Locality>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 							<tsl:PostalCode>35510</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
-						<tsl:PostalAddress xml:lang="fr">
-							<tsl:StreetAddress>122, rue Robert Keller</tsl:StreetAddress>
-							<tsl:Locality>Cesson Sevigne</tsl:Locality>
-							<tsl:StateOrProvince>France</tsl:StateOrProvince>
+						<tsl:PostalAddress xml:lang="en">
+							<tsl:StreetAddress>122, RUE ROBERT KELLER</tsl:StreetAddress>
+							<tsl:Locality>CESSON SEVIGNE</tsl:Locality>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 							<tsl:PostalCode>35510</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
 					</tsl:PostalAddresses>
 					<tsl:ElectronicAddress>
 						<tsl:URI xml:lang="fr">mailto:contact@idnow.io</tsl:URI>
+						<tsl:URI xml:lang="en">mailto:contact@idnow.io</tsl:URI>
 					</tsl:ElectronicAddress>
 				</tsl:TSPAddress>
 				<tsl:TSPInformationURI>
-					<tsl:URI xml:lang="en">http://pki-g2.ariadnext.fr/pki-2ddoc.der</tsl:URI>
 					<tsl:URI xml:lang="fr">http://pki-g2.ariadnext.fr/pki-2ddoc.der</tsl:URI>
+					<tsl:URI xml:lang="en">http://pki-g2.ariadnext.fr/pki-2ddoc.der</tsl:URI>
 				</tsl:TSPInformationURI>
 			</tsl:TSPInformation>
 			<tsl:TSPServices>
@@ -208,8 +212,8 @@
 					<tsl:ServiceInformation>
 						<tsl:ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/CA/PKC</tsl:ServiceTypeIdentifier>
 						<tsl:ServiceName>
-							<tsl:Name xml:lang="en">IDnow SAS FR04 2D-Doc Barcode signature</tsl:Name>
-							<tsl:Name xml:lang="fr">IDnow SAS FR04 2D-Doc Barcode signature</tsl:Name>
+							<tsl:Name xml:lang="fr">IDNOW SAS - FR04 2D-DOC Cachet Electronique Visible (CEV) Signature</tsl:Name>
+							<tsl:Name xml:lang="en">IDNOW SAS - FR04 2D-DOC Visible Digital Seal (VDS) Signature</tsl:Name>
 						</tsl:ServiceName>
 						<tsl:ServiceDigitalIdentity>
 							<tsl:DigitalId>
@@ -227,37 +231,38 @@
 		<tsl:TrustServiceProvider>
 			<tsl:TSPInformation>
 				<tsl:TSPName>
-					<tsl:Name xml:lang="en">ANTS</tsl:Name>
-					<tsl:Name xml:lang="fr">ANTS</tsl:Name>
+					<tsl:Name xml:lang="fr">FRANCE TITRES (ANTS)</tsl:Name>
+					<tsl:Name xml:lang="en">FRANCE TITRES (ANTS)</tsl:Name>
 				</tsl:TSPName>
 				<tsl:TSPTradeName>
-					<tsl:Name xml:lang="en">FR05</tsl:Name>
 					<tsl:Name xml:lang="fr">FR05</tsl:Name>
+					<tsl:Name xml:lang="en">FR05</tsl:Name>
 				</tsl:TSPTradeName>
 				<tsl:TSPAddress>
 					<tsl:PostalAddresses>
-						<tsl:PostalAddress xml:lang="en">
-							<tsl:StreetAddress>101 Rue TOLBIAC</tsl:StreetAddress>
+						<tsl:PostalAddress xml:lang="fr">
+							<tsl:StreetAddress>101, RUE TOLBIAC</tsl:StreetAddress>
 							<tsl:Locality>PARIS</tsl:Locality>
-							<tsl:StateOrProvince>France</tsl:StateOrProvince>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 							<tsl:PostalCode>75013</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
-						<tsl:PostalAddress xml:lang="fr">
-							<tsl:StreetAddress>101 Rue TOLBIAC</tsl:StreetAddress>
+						<tsl:PostalAddress xml:lang="en">
+							<tsl:StreetAddress>101, RUE TOLBIAC</tsl:StreetAddress>
 							<tsl:Locality>PARIS</tsl:Locality>
-							<tsl:StateOrProvince>France</tsl:StateOrProvince>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 							<tsl:PostalCode>75013</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
 					</tsl:PostalAddresses>
 					<tsl:ElectronicAddress>
-						<tsl:URI xml:lang="fr">mailto:cev-ac-ants@interieur.gouv.fr</tsl:URI>
+						<tsl:URI xml:lang="fr">mailto:2ddoc-ants@interieur.gouv.fr</tsl:URI>
+						<tsl:URI xml:lang="en">mailto:2ddoc-ants@interieur.gouv.fr</tsl:URI>
 					</tsl:ElectronicAddress>
 				</tsl:TSPAddress>
 				<tsl:TSPInformationURI>
-					<tsl:URI xml:lang="en">http://sp.ants.gouv.fr/cev/FR05_cert.der</tsl:URI>
 					<tsl:URI xml:lang="fr">http://sp.ants.gouv.fr/cev/FR05_cert.der</tsl:URI>
+					<tsl:URI xml:lang="en">http://sp.ants.gouv.fr/cev/FR05_cert.der</tsl:URI>
 				</tsl:TSPInformationURI>
 			</tsl:TSPInformation>
 			<tsl:TSPServices>
@@ -265,8 +270,8 @@
 					<tsl:ServiceInformation>
 						<tsl:ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/CA/PKC</tsl:ServiceTypeIdentifier>
 						<tsl:ServiceName>
-							<tsl:Name xml:lang="en">ANTS FR05 2D-DOC Barcode Signature</tsl:Name>
-							<tsl:Name xml:lang="fr">ANTS FR05 2D-DOC Barcode Signature</tsl:Name>
+							<tsl:Name xml:lang="fr">FRANCE TITRES (ANTS) - FR05 2D-DOC Cachet Electronique Visible (CEV) Signature</tsl:Name>
+							<tsl:Name xml:lang="en">FRANCE TITRES (ANTS) - FR05 2D-DOC Visible Digital Seal (VDS) Signature</tsl:Name>
 						</tsl:ServiceName>
 						<tsl:ServiceDigitalIdentity>
 							<tsl:DigitalId>
@@ -284,37 +289,38 @@
 		<tsl:TrustServiceProvider>
 			<tsl:TSPInformation>
 				<tsl:TSPName>
-					<tsl:Name xml:lang="en">IDnow SAS</tsl:Name>
-					<tsl:Name xml:lang="fr">IDnow SAS</tsl:Name>
+					<tsl:Name xml:lang="fr">IDNOW SAS</tsl:Name>
+					<tsl:Name xml:lang="en">IDNOW SAS</tsl:Name>
 				</tsl:TSPName>
 				<tsl:TSPTradeName>
-					<tsl:Name xml:lang="en">FR06</tsl:Name>
 					<tsl:Name xml:lang="fr">FR06</tsl:Name>
+					<tsl:Name xml:lang="en">FR06</tsl:Name>
 				</tsl:TSPTradeName>
 				<tsl:TSPAddress>
 					<tsl:PostalAddresses>
-						<tsl:PostalAddress xml:lang="en">
-							<tsl:StreetAddress>122, rue Robert Keller</tsl:StreetAddress>
-							<tsl:Locality>Cesson Sevigne</tsl:Locality>
-							<tsl:StateOrProvince>France</tsl:StateOrProvince>
+						<tsl:PostalAddress xml:lang="fr">
+							<tsl:StreetAddress>122, RUE ROBERT KELLER</tsl:StreetAddress>
+							<tsl:Locality>CESSON SEVIGNE</tsl:Locality>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 							<tsl:PostalCode>35510</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
-						<tsl:PostalAddress xml:lang="fr">
-							<tsl:StreetAddress>122, rue Robert Keller</tsl:StreetAddress>
-							<tsl:Locality>Cesson Sevigne</tsl:Locality>
-							<tsl:StateOrProvince>France</tsl:StateOrProvince>
+						<tsl:PostalAddress xml:lang="en">
+							<tsl:StreetAddress>122, RUE ROBERT KELLER</tsl:StreetAddress>
+							<tsl:Locality>CESSON SEVIGNE</tsl:Locality>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 							<tsl:PostalCode>35510</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
 					</tsl:PostalAddresses>
 					<tsl:ElectronicAddress>
 						<tsl:URI xml:lang="fr">mailto:contact@idnow.io</tsl:URI>
+						<tsl:URI xml:lang="en">mailto:contact@idnow.io</tsl:URI>
 					</tsl:ElectronicAddress>
 				</tsl:TSPAddress>
 				<tsl:TSPInformationURI>
-					<tsl:URI xml:lang="en">http://pki-g3.ariadnext.fr/pki-2ddoc.der</tsl:URI>
 					<tsl:URI xml:lang="fr">http://pki-g3.ariadnext.fr/pki-2ddoc.der</tsl:URI>
+					<tsl:URI xml:lang="en">http://pki-g3.ariadnext.fr/pki-2ddoc.der</tsl:URI>
 				</tsl:TSPInformationURI>
 			</tsl:TSPInformation>
 			<tsl:TSPServices>
@@ -322,8 +328,8 @@
 					<tsl:ServiceInformation>
 						<tsl:ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/CA/PKC</tsl:ServiceTypeIdentifier>
 						<tsl:ServiceName>
-							<tsl:Name xml:lang="en">IDnow SAS FR06 2D-Doc Barcode signature</tsl:Name>
-							<tsl:Name xml:lang="fr">IDnow SAS FR06 2D-Doc Barcode signature</tsl:Name>
+							<tsl:Name xml:lang="fr">IDNOW SAS - FR06 2D-DOC Cachet Electronique Visible (CEV) Signature</tsl:Name>
+							<tsl:Name xml:lang="en">IDNOW SAS - FR06 2D-DOC Visible Digital Seal (VDS) Signature</tsl:Name>
 						</tsl:ServiceName>
 						<tsl:ServiceDigitalIdentity>
 							<tsl:DigitalId>
@@ -341,37 +347,38 @@
 		<tsl:TrustServiceProvider>
 			<tsl:TSPInformation>
 				<tsl:TSPName>
-					<tsl:Name xml:lang="en">Goodflag</tsl:Name>
-					<tsl:Name xml:lang="fr">Goodflag</tsl:Name>
+					<tsl:Name xml:lang="fr">GOODFLAG</tsl:Name>
+					<tsl:Name xml:lang="en">GOODFLAG</tsl:Name>
 				</tsl:TSPName>
 				<tsl:TSPTradeName>
-					<tsl:Name xml:lang="en">FR07</tsl:Name>
 					<tsl:Name xml:lang="fr">FR07</tsl:Name>
+					<tsl:Name xml:lang="en">FR07</tsl:Name>
 				</tsl:TSPTradeName>
 				<tsl:TSPAddress>
 					<tsl:PostalAddresses>
-						<tsl:PostalAddress xml:lang="en">
-							<tsl:StreetAddress>9, Av Maréchal Leclerc</tsl:StreetAddress>
+						<tsl:PostalAddress xml:lang="fr">
+							<tsl:StreetAddress>9, AV MARÉCHAL LECLERC</tsl:StreetAddress>
 							<tsl:Locality>ST ANDRE LES VERGERS</tsl:Locality>
-							<tsl:StateOrProvince>France</tsl:StateOrProvince>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 							<tsl:PostalCode>10120</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
-						<tsl:PostalAddress xml:lang="fr">
-							<tsl:StreetAddress>9, Av Maréchal Leclerc</tsl:StreetAddress>
+						<tsl:PostalAddress xml:lang="en">
+							<tsl:StreetAddress>9, AV MARÉCHAL LECLERC</tsl:StreetAddress>
 							<tsl:Locality>ST ANDRE LES VERGERS</tsl:Locality>
-							<tsl:StateOrProvince>France</tsl:StateOrProvince>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
 							<tsl:PostalCode>10120</tsl:PostalCode>
 							<tsl:CountryName>FR</tsl:CountryName>
 						</tsl:PostalAddress>
 					</tsl:PostalAddresses>
 					<tsl:ElectronicAddress>
 						<tsl:URI xml:lang="fr">mailto:pki@sunnystamp.com</tsl:URI>
+						<tsl:URI xml:lang="en">mailto:pki@sunnystamp.com</tsl:URI>
 					</tsl:ElectronicAddress>
 				</tsl:TSPAddress>
 				<tsl:TSPInformationURI>
-					<tsl:URI xml:lang="en">https://pki2.sunnystamp.com/certs/fr07.der</tsl:URI>
 					<tsl:URI xml:lang="fr">https://pki2.sunnystamp.com/certs/fr07.der</tsl:URI>
+					<tsl:URI xml:lang="en">https://pki2.sunnystamp.com/certs/fr07.der</tsl:URI>
 				</tsl:TSPInformationURI>
 			</tsl:TSPInformation>
 			<tsl:TSPServices>
@@ -379,8 +386,8 @@
 					<tsl:ServiceInformation>
 						<tsl:ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/CA/PKC</tsl:ServiceTypeIdentifier>
 						<tsl:ServiceName>
-							<tsl:Name xml:lang="en">Goodflag FR07 2D-Doc Barcode signature</tsl:Name>
-							<tsl:Name xml:lang="fr">Goodflag FR07 2D-Doc Barcode signature</tsl:Name>
+							<tsl:Name xml:lang="fr">GOODFLAG - FR07 2D-DOC Cachet Electronique Visible (CEV) Signature</tsl:Name>
+							<tsl:Name xml:lang="en">GOODFLAG - FR07 2D-DOC Visible Digital Seal (VDS) Signature</tsl:Name>
 						</tsl:ServiceName>
 						<tsl:ServiceDigitalIdentity>
 							<tsl:DigitalId>
@@ -395,5 +402,64 @@
 				</tsl:TSPService>
 			</tsl:TSPServices>
 		</tsl:TrustServiceProvider>
+		<tsl:TrustServiceProvider>
+			<tsl:TSPInformation>
+				<tsl:TSPName>
+					<tsl:Name xml:lang="fr">FRANCE TITRES (ANTS)</tsl:Name>
+					<tsl:Name xml:lang="en">FRANCE TITRES (ANTS)</tsl:Name>
+				</tsl:TSPName>
+				<tsl:TSPTradeName>
+					<tsl:Name xml:lang="fr">FR09</tsl:Name>
+					<tsl:Name xml:lang="en">FR09</tsl:Name>
+				</tsl:TSPTradeName>
+				<tsl:TSPAddress>
+					<tsl:PostalAddresses>
+						<tsl:PostalAddress xml:lang="fr">
+							<tsl:StreetAddress>101, RUE TOLBIAC</tsl:StreetAddress>
+							<tsl:Locality>PARIS</tsl:Locality>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
+							<tsl:PostalCode>75013</tsl:PostalCode>
+							<tsl:CountryName>FR</tsl:CountryName>
+						</tsl:PostalAddress>
+						<tsl:PostalAddress xml:lang="en">
+							<tsl:StreetAddress>101, RUE TOLBIAC</tsl:StreetAddress>
+							<tsl:Locality>PARIS</tsl:Locality>
+							<tsl:StateOrProvince>FRANCE</tsl:StateOrProvince>
+							<tsl:PostalCode>75013</tsl:PostalCode>
+							<tsl:CountryName>FR</tsl:CountryName>
+						</tsl:PostalAddress>
+					</tsl:PostalAddresses>
+					<tsl:ElectronicAddress>
+						<tsl:URI xml:lang="fr">mailto:2ddoc-ants@interieur.gouv.fr</tsl:URI>
+						<tsl:URI xml:lang="en">mailto:2ddoc-ants@interieur.gouv.fr</tsl:URI>
+					</tsl:ElectronicAddress>
+				</tsl:TSPAddress>
+				<tsl:TSPInformationURI>
+					<tsl:URI xml:lang="fr">https://sp.ants.gouv.fr/cev/FR09_cert.der</tsl:URI>
+					<tsl:URI xml:lang="en">https://sp.ants.gouv.fr/cev/FR09_cert.der</tsl:URI>
+				</tsl:TSPInformationURI>
+			</tsl:TSPInformation>
+			<tsl:TSPServices>
+				<tsl:TSPService>
+					<tsl:ServiceInformation>
+						<tsl:ServiceTypeIdentifier>http://uri.etsi.org/TrstSvc/Svctype/CA/PKC</tsl:ServiceTypeIdentifier>
+						<tsl:ServiceName>
+							<tsl:Name xml:lang="fr">FRANCE TITRES (ANTS) - FR09 2D-DOC Cachet Electronique Visible (CEV) Signature</tsl:Name>
+							<tsl:Name xml:lang="en">FRANCE TITRES (ANTS) - FR09 2D-DOC Visible Digital Seal (VDS) Signature</tsl:Name>
+						</tsl:ServiceName>
+						<tsl:ServiceDigitalIdentity>
+							<tsl:DigitalId>
+								<tsl:X509Certificate>
+									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
+								</tsl:X509Certificate>
+							</tsl:DigitalId>
+						</tsl:ServiceDigitalIdentity>
+						<tsl:ServiceStatus>http://uri.etsi.org/TrstSvc/Svcstatus/inaccord</tsl:ServiceStatus>
+						<tsl:StatusStartingTime>2025-12-04T02:00:00Z</tsl:StatusStartingTime>
+					</tsl:ServiceInformation>
+				</tsl:TSPService>
+			</tsl:TSPServices>
+		</tsl:TrustServiceProvider>
 	</tsl:TrustServiceProviderList>
-<ds:Signature Id="id-fe58c6f19dc64d729b89aa968bc0e56e"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference Id="r-id-fe58c6f19dc64d729b89aa968bc0e56e-1" URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"><dsig-filter2:XPath xmlns:dsig-filter2="http://www.w3.org/2002/06/xmldsig-filter2" Filter="subtract">/descendant::ds:Signature</dsig-filter2:XPath></ds:Transform><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>Jz+MedBTzSQGCJTqKodpN1HuaIuKY7h+N1pn3NPAHW4=</ds:DigestValue></ds:Reference><ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#xades-id-fe58c6f19dc64d729b89aa968bc0e56e"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>qZeCTzphppB3XGJeM3GTV4IU3k9OjM/onE9/JgyXHkk=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="value-id-fe58c6f19dc64d729b89aa968bc0e56e">meQ/P7O/bQI+95nObHStmsqVuH3jXAusHDBYoWqNIbVlrMoGvPWLh+Kw3co5O1V0IeZHWInQFgJmzQkwd6EUrAh4OmWTd8lDnma49++fibvFHBPq1GXgyn7zuECOLiX+aF7K+iQfaGBkhSpPZ70KDDuVzpbt5s/Y2ONRJeQ9GzDjAoBKRdwIiZNFMmlka1Fs7k0cYkWmcDFxjeH/MTwGMf0wQSl735Yek99tfB5YRLARL8HknjQbpDLCBssBO7SytxYw/V5IbkNEJFSQBOFTLFg57aabFGqf6Sdp0Hbkss3mQYo1Gaye+HXYRqH/Vs1jxjsqYiWrfM6TYbgBUciOXw==</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIFETCCA/mgAwIBAgIUaIxbuGQGFetL/5x4zA3dACCM79kwDQYJKoZIhvcNAQELBQAwgZ4xCzAJBgNVBAYTAkZSMTAwLgYDVQQKDCdBZ2VuY2UgTmF0aW9uYWxlIGRlcyBUaXRyZXMgU8OpY3VyaXPDqXMxFzAVBgNVBAsMDjAwMDIgMTMwMDAzMjYyMTgwNgYDVQQDDC9BdXRvcml0w6kgZGUgQ2VydGlmaWNhdGlvbiBTZXJ2aWNlcyBBcHBsaWNhdGlmczEKMAgGA1UEBRMBNDAeFw0yNDAzMjYxMzUxNTVaFw0yNzAzMjYxMzUxNTVaMHQxCzAJBgNVBAYTAkZSMTAwLgYDVQQKDCdBZ2VuY2UgTmF0aW9uYWxlIGRlcyBUaXRyZXMgU8OpY3VyaXPDqXMxFzAVBgNVBAsMDjAwMDIgMTMwMDAzMjYyMRowGAYDVQQDDBFBTlRTIENBQ0hFVCAyRERPQzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL3RpDQ4KsJYWSseTt+uyVtNJQjNkz5m2NAscg67DNvLZ2ab/ubncpgQFVIXD16pJZch2vO2PyuD2D+UaziSSZpzyohy/fZMB20S0t5vOR6iLjgzeQSTVQS4QOQnYaFkVsBZk+NDZoSMgpiIsvnqEmkgM/oWkhJtXNY+Aol+TISRYfeXsNjPZvkM6qDtnXOnq29n97OXm7uv2v7j7Re/xhH96+fCX6Ajg3PnO2cc3ogk7+AETlHCrGRBMoI6dxwDdfBmqgf1kv9ShsqsJQT+Ad/xqHJ5O2vls+KInzEgvO2dYiOuM98IhPKKPCy9KVQuouzqy9BqBvhiWC0LDa14P7cCAwEAAaOCAW4wggFqMB0GA1UdDgQWBBSAzS6sK2LepRAwGfxlqR44z0M1ODAfBgNVHSMEGDAWgBQovJQVxe1X7JNCAftngT+cfrJOITAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIHgDBOBgNVHR8ERzBFMEOgQaA/hj1odHRwOi8vY3JsLmFudHMuZ291di5mci9hbnRzYXYzL2FjX3NlcnZpY2VzX2FwcGxpY2F0aWZzXzQuY3JsMBgGA1UdIAQRMA8wDQYLKoF6AYFIAwMJAQEwgaIGCCsGAQUFBwEBBIGVMIGSMEYGCCsGAQUFBzABhjpodHRwOi8vb2NzcC5hbnRzLmdvdXYuZnIvYW50c2F2My9hY19zZXJ2aWNlc19hcHBsaWNhdGlmc180MEgGCCsGAQUFBzAChjxodHRwOi8vc3AuYW50cy5nb3V2LmZyL2FudHNhdjMvYWNfc2VydmljZXNfYXBwbGljYXRpZnNfNC5jZXIwDQYJKoZIhvcNAQELBQADggEBANqWbYgwkHA3jWF0DhhCRUkstl66vIZ0sKtkVVHmyBJsAG/Ll+nYcODxV+6PSnOMaHtIMzI9zimS9ZQFQoN8neQugE5XvoPJ03uLQDLtzNL3SNwYe8+OOnQA/9YzcBQz5192G9c+rBBNxJv9Jdlc5BjAnjlv/juqVcJromUhGdtE3wk/f+Ulh65jORhlyTsE0ej5TmT6ndUCjfQr7qh8TkXTHox8Nj5wEUwcmlvXbvEJqG99ZiyjeV9kyaIWWNiGq3JTQmAQj9IpQWVWQ/GiLbsdzTWnVtCeoBqCXMftRcGpp3QmR02OCefZ1kYtXEUo7zkGPrRXkqxJg4hL0PiWh48=</ds:X509Certificate></ds:X509Data></ds:KeyInfo><ds:Object><xades:QualifyingProperties Target="#id-fe58c6f19dc64d729b89aa968bc0e56e"><xades:SignedProperties Id="xades-id-fe58c6f19dc64d729b89aa968bc0e56e"><xades:SignedSignatureProperties><xades:SigningTime>2025-08-25T08:19:41Z</xades:SigningTime><xades:SigningCertificateV2><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><ds:DigestValue>0K5zi/6+OVrhIzEh65VuMDOC95mu2FZ2nddE2eEonG/BN5oO73rwq/JpJ2XEQf5yImOPCQvOL5qZRmXKFndsCw==</ds:DigestValue></xades:CertDigest><xades:IssuerSerialV2>MIG9MIGkpIGhMIGeMQswCQYDVQQGEwJGUjEwMC4GA1UECgwnQWdlbmNlIE5hdGlvbmFsZSBkZXMgVGl0cmVzIFPDqWN1cmlzw6lzMRcwFQYDVQQLDA4wMDAyIDEzMDAwMzI2MjE4MDYGA1UEAwwvQXV0b3JpdMOpIGRlIENlcnRpZmljYXRpb24gU2VydmljZXMgQXBwbGljYXRpZnMxCjAIBgNVBAUTATQCFGiMW7hkBhXrS/+ceMwN3QAgjO/Z</xades:IssuerSerialV2></xades:Cert></xades:SigningCertificateV2></xades:SignedSignatureProperties><xades:SignedDataObjectProperties><xades:DataObjectFormat ObjectReference="#r-id-fe58c6f19dc64d729b89aa968bc0e56e-1"><xades:MimeType>text/xml</xades:MimeType></xades:DataObjectFormat></xades:SignedDataObjectProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object></ds:Signature></tsl:TrustServiceStatusList>
+	<!-- Signature XAdES (facultatif si signaaure CAdES disponible ici : https://pub.ants.gouv.fr/2D-DOC/V1/PRD/01_TSL/tsl_signed.pkcs7.p7s) -->
+<ds:Signature Id="id-5f5c33206960339bc568b6e94baf89ca"><ds:SignedInfo><ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><ds:Reference Id="r-id-5f5c33206960339bc568b6e94baf89ca-1" URI=""><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2002/06/xmldsig-filter2"><dsig-filter2:XPath xmlns:dsig-filter2="http://www.w3.org/2002/06/xmldsig-filter2" Filter="subtract">/descendant::ds:Signature</dsig-filter2:XPath></ds:Transform><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>j0T4+sz1j9YoAQ9UK4w1/uN/DY5nKUF4avqOvyjAzjA=</ds:DigestValue></ds:Reference><ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#xades-id-5f5c33206960339bc568b6e94baf89ca"><ds:Transforms><ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ds:Transforms><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><ds:DigestValue>eRPP0lNzFKVrGqI1UK/WnkmhTP7PRialL4VoqPpUOTM=</ds:DigestValue></ds:Reference></ds:SignedInfo><ds:SignatureValue Id="value-id-5f5c33206960339bc568b6e94baf89ca">f6mUHNp3PKi+UdkK5jXDmvUPbDevQ50/CztjqQOAJ7iFJQzIk6Xq5GyQA8wgue0MKu8bCcR9qSP4A5f/9RSeOx7jL1Xh2swKC4P4zZsGCqIq0WAG7rG7N7t3pdKRpy7LmMVDyYVxFVVB/G50hkgF4H96yDp7SIIByTaoOMKfkO1D67rN68Tlc7fFmVqkCya0oL8Kqf9dFECHdhhGnPLAqEq9KB+lzK+wo+5BHCkR6d6jnuQIRP9fSxVg9H48LmOUqxizslV8dlQk757wpngsaty1CVFwFJnXz/6knERIQU+yxu+uFcxFlqKsud4FYXtfxOVzznNQIK23YCIcIWQpQw==</ds:SignatureValue><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIFETCCA/mgAwIBAgIUaIxbuGQGFetL/5x4zA3dACCM79kwDQYJKoZIhvcNAQELBQAwgZ4xCzAJBgNVBAYTAkZSMTAwLgYDVQQKDCdBZ2VuY2UgTmF0aW9uYWxlIGRlcyBUaXRyZXMgU8OpY3VyaXPDqXMxFzAVBgNVBAsMDjAwMDIgMTMwMDAzMjYyMTgwNgYDVQQDDC9BdXRvcml0w6kgZGUgQ2VydGlmaWNhdGlvbiBTZXJ2aWNlcyBBcHBsaWNhdGlmczEKMAgGA1UEBRMBNDAeFw0yNDAzMjYxMzUxNTVaFw0yNzAzMjYxMzUxNTVaMHQxCzAJBgNVBAYTAkZSMTAwLgYDVQQKDCdBZ2VuY2UgTmF0aW9uYWxlIGRlcyBUaXRyZXMgU8OpY3VyaXPDqXMxFzAVBgNVBAsMDjAwMDIgMTMwMDAzMjYyMRowGAYDVQQDDBFBTlRTIENBQ0hFVCAyRERPQzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL3RpDQ4KsJYWSseTt+uyVtNJQjNkz5m2NAscg67DNvLZ2ab/ubncpgQFVIXD16pJZch2vO2PyuD2D+UaziSSZpzyohy/fZMB20S0t5vOR6iLjgzeQSTVQS4QOQnYaFkVsBZk+NDZoSMgpiIsvnqEmkgM/oWkhJtXNY+Aol+TISRYfeXsNjPZvkM6qDtnXOnq29n97OXm7uv2v7j7Re/xhH96+fCX6Ajg3PnO2cc3ogk7+AETlHCrGRBMoI6dxwDdfBmqgf1kv9ShsqsJQT+Ad/xqHJ5O2vls+KInzEgvO2dYiOuM98IhPKKPCy9KVQuouzqy9BqBvhiWC0LDa14P7cCAwEAAaOCAW4wggFqMB0GA1UdDgQWBBSAzS6sK2LepRAwGfxlqR44z0M1ODAfBgNVHSMEGDAWgBQovJQVxe1X7JNCAftngT+cfrJOITAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIHgDBOBgNVHR8ERzBFMEOgQaA/hj1odHRwOi8vY3JsLmFudHMuZ291di5mci9hbnRzYXYzL2FjX3NlcnZpY2VzX2FwcGxpY2F0aWZzXzQuY3JsMBgGA1UdIAQRMA8wDQYLKoF6AYFIAwMJAQEwgaIGCCsGAQUFBwEBBIGVMIGSMEYGCCsGAQUFBzABhjpodHRwOi8vb2NzcC5hbnRzLmdvdXYuZnIvYW50c2F2My9hY19zZXJ2aWNlc19hcHBsaWNhdGlmc180MEgGCCsGAQUFBzAChjxodHRwOi8vc3AuYW50cy5nb3V2LmZyL2FudHNhdjMvYWNfc2VydmljZXNfYXBwbGljYXRpZnNfNC5jZXIwDQYJKoZIhvcNAQELBQADggEBANqWbYgwkHA3jWF0DhhCRUkstl66vIZ0sKtkVVHmyBJsAG/Ll+nYcODxV+6PSnOMaHtIMzI9zimS9ZQFQoN8neQugE5XvoPJ03uLQDLtzNL3SNwYe8+OOnQA/9YzcBQz5192G9c+rBBNxJv9Jdlc5BjAnjlv/juqVcJromUhGdtE3wk/f+Ulh65jORhlyTsE0ej5TmT6ndUCjfQr7qh8TkXTHox8Nj5wEUwcmlvXbvEJqG99ZiyjeV9kyaIWWNiGq3JTQmAQj9IpQWVWQ/GiLbsdzTWnVtCeoBqCXMftRcGpp3QmR02OCefZ1kYtXEUo7zkGPrRXkqxJg4hL0PiWh48=</ds:X509Certificate></ds:X509Data></ds:KeyInfo><ds:Object><xades:QualifyingProperties Target="#id-5f5c33206960339bc568b6e94baf89ca"><xades:SignedProperties Id="xades-id-5f5c33206960339bc568b6e94baf89ca"><xades:SignedSignatureProperties><xades:SigningTime>2026-05-12T09:15:39Z</xades:SigningTime><xades:SigningCertificateV2><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha512"/><ds:DigestValue>0K5zi/6+OVrhIzEh65VuMDOC95mu2FZ2nddE2eEonG/BN5oO73rwq/JpJ2XEQf5yImOPCQvOL5qZRmXKFndsCw==</ds:DigestValue></xades:CertDigest><xades:IssuerSerialV2>MIG9MIGkpIGhMIGeMQswCQYDVQQGEwJGUjEwMC4GA1UECgwnQWdlbmNlIE5hdGlvbmFsZSBkZXMgVGl0cmVzIFPDqWN1cmlzw6lzMRcwFQYDVQQLDA4wMDAyIDEzMDAwMzI2MjE4MDYGA1UEAwwvQXV0b3JpdMOpIGRlIENlcnRpZmljYXRpb24gU2VydmljZXMgQXBwbGljYXRpZnMxCjAIBgNVBAUTATQCFGiMW7hkBhXrS/+ceMwN3QAgjO/Z</xades:IssuerSerialV2></xades:Cert></xades:SigningCertificateV2></xades:SignedSignatureProperties><xades:SignedDataObjectProperties><xades:DataObjectFormat ObjectReference="#r-id-5f5c33206960339bc568b6e94baf89ca-1"><xades:MimeType>text/xml</xades:MimeType></xades:DataObjectFormat></xades:SignedDataObjectProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object></ds:Signature></tsl:TrustServiceStatusList>
