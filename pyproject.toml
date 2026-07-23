@@ -3,7 +3,7 @@ requires = ["uv_build>=0.7,<1.0"]
 build-backend = "uv_build"
 
 [project]
-name = "tdd"
+name = "tddoc"
 version = "0.3"
 description = "2D-Doc toolsuite"
 readme = "readme.rst"
@@ -26,15 +26,15 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/nipo/tdd"
+Homepage = "https://github.com/sylvainpelissier/tddoc"
 
 [project.optional-dependencies]
 fetch = ["lxml", "requests", "xmlsec"]
-dev = ["tdd[fetch]", "pytest", "pyyaml"]
+dev = ["tddoc[fetch]", "pytest", "pyyaml"]
 
 [project.scripts]
-tdd-fetch-chains = "tdd.fetch_chains:main"
+tddoc-fetch-chains = "tddoc.fetch_chains:main"
 
 [tool.uv.build-backend]
-module-name = "tdd"
+module-name = "tddoc"
 module-root = ""
