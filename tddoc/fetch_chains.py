@@ -14,9 +14,15 @@ Use -o tddoc/chains to update the bundled certificates.
 If no CA names are specified, downloads all available chains.
 """
 
-import sys
 import argparse
+import sys
 from base64 import b64decode
+from datetime import datetime, timezone
+from importlib.resources import files
+from pathlib import Path
+
+import requests
+import xmlsec
 from cryptography import x509
 from cryptography.hazmat.primitives import serialization
 from cryptography.x509.oid import (
@@ -30,12 +36,8 @@ from cryptography.x509.verification import (
     PolicyBuilder,
     Store,
 )
-from datetime import datetime, timezone
-from importlib.resources import files
 from lxml import etree
-from pathlib import Path
-import requests
-import xmlsec
+from requests.exceptions import HTTPError
 
 TSL_NS = {"tsl": "http://uri.etsi.org/02231/v2#"}
 TSL_DS = {"ds": "http://www.w3.org/2000/09/xmldsig#"}
@@ -229,7 +231,11 @@ class ChainFetcher:
         print(f"Downloading {uri}")
 
         response = requests.get(uri, headers=HEADERS)
-        response.raise_for_status()
+        try:
+            response.raise_for_status()
+        except HTTPError as e:
+            print(f"Error fetching {ca_name}: {e}", file=sys.stderr)
+            return
 
         cert_ders = self._unbundle_multipart(response.content)
         for der in cert_ders:
@@ -250,10 +256,7 @@ class ChainFetcher:
 
     def fetch_all(self):
         for ca_name in self.available_cas():
-            try:
-                self.fetch(ca_name)
-            except Exception as e:
-                print(f"Error fetching {ca_name}: {e}", file=sys.stderr)
+            self.fetch(ca_name)
 
 
 def main(args=None):

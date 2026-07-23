@@ -1,10 +1,12 @@
-from .header import Header
-from .message import C40Message
 from base64 import b32decode
+
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.primitives.asymmetric.utils import encode_dss_signature
+
+from .header import Header
+from .message import C40Message
 
 __doc__ = """
 Documentation representation.

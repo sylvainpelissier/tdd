@@ -2,8 +2,9 @@
 Pytest fixtures for 2D-Doc specification tests.
 """
 
-import pytest
 from pathlib import Path
+
+import pytest
 
 
 def discover_test_cases(samples_dir: Path):

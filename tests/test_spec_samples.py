@@ -7,9 +7,11 @@ These tests verify:
 3. Re-encoding produces the same payload (unsigned portion)
 """
 
-import yaml
 from datetime import date, datetime, time
 from pathlib import Path
+
+import yaml
+
 from tddoc.doc import TwoDDoc
 
 

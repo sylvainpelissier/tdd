@@ -1,5 +1,6 @@
-from . import data_definition
 import re
+
+from . import data_definition
 
 __doc__ = "Message part"
 
@@ -25,8 +26,6 @@ class VariableData(Data):
 
 class FixedData(Data):
     "A fixed length data entry"
-
-    pass
 
 
 class Message:

@@ -1,8 +1,9 @@
-from cryptography import x509
-from cryptography.x509.oid import NameOID
 from datetime import datetime, timezone
 from io import BytesIO
 from pathlib import Path
+
+from cryptography import x509
+from cryptography.x509.oid import NameOID
 
 __doc__ = "Keychain management"
 
@@ -13,8 +14,6 @@ MULTIPART_BOUNDARY = b"--End"
 
 class ExpiredCertificateError(Exception):
     """Raised when a certificate has expired or is not yet valid."""
-
-    pass
 
 
 class KeyChain:
@@ -99,7 +98,7 @@ class KeyChain:
     def der_add(self, der):
         try:
             cert = x509.load_der_x509_certificate(der)
-        except (ValueError, Exception):
+        except ValueError:
             return
         self.certs.append(cert)
 

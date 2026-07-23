@@ -2,8 +2,8 @@ __doc__ = "2D-Doc dumper helper"
 
 
 def dump(doc, keychain=None):
-    from .doc import TwoDDoc
     from .data_definition import c40
+    from .doc import TwoDDoc
 
     d = TwoDDoc.from_code(doc)
 
@@ -40,6 +40,7 @@ def dump(doc, keychain=None):
 
 if __name__ == "__main__":
     import argparse
+
     from .keychain import internal
 
     parser = argparse.ArgumentParser(description="Dump 2D-Doc content")

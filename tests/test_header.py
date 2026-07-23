@@ -1,5 +1,6 @@
-from tddoc.header import Header, date_parse_text, date_encode
 from datetime import date
+
+from tddoc.header import Header, date_encode, date_parse_text
 
 
 def test_date():

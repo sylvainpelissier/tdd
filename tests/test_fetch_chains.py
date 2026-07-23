@@ -2,13 +2,14 @@
 Tests for ChainFetcher.verify_tsl signature verification.
 """
 
-import pytest
-import xmlsec
 from importlib.resources import files
 from pathlib import Path
 
+import pytest
+import xmlsec
 from cryptography import x509
 from cryptography.x509.oid import NameOID
+
 from tddoc.fetch_chains import ChainFetcher
 
 # The intermediate certificate that verify_tsl would otherwise fetch over the

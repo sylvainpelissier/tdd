@@ -30,7 +30,7 @@ Homepage = "https://github.com/sylvainpelissier/tddoc"
 
 [project.optional-dependencies]
 fetch = ["lxml", "requests", "xmlsec"]
-dev = ["tddoc[fetch]", "pytest", "pyyaml", "ruff"]
+dev = ["tddoc[fetch]", "pytest", "pyyaml", "ruff==0.16.0"]
 
 [project.scripts]
 tddoc-fetch-chains = "tddoc.fetch_chains:main"

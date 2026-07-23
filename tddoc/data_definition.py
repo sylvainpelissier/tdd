@@ -1,5 +1,5 @@
-from datetime import date, time, datetime, timedelta
 import re
+from datetime import date, datetime, time, timedelta
 
 __doc__ = """
 
@@ -179,7 +179,7 @@ class JJMMAAAAHHMM(Format):
         a = int(text[4:8], 10)
         h = int(text[8:10], 10)
         mi = int(text[10:12], 10)
-        return datetime(a, m, j, h, mi)
+        return datetime(a, m, j, h, mi)  # noqa: DTZ001 - format carries no timezone
 
     def serialize(self, d):
         return f"{d.day:02d}{d.month:02d}{d.year:04d}{d.hour:02d}{d.minute:02d}"
@@ -195,10 +195,8 @@ class HexInt(Format):
 
     def serialize(self, v):
         if self.size_min == self.size_max:
-            fmt = "%%0%dX" % self.size_min
-        else:
-            fmt = "%X"
-        return fmt % v
+            return f"{v:0{self.size_min}X}"
+        return f"{v:X}"
 
     def from_spec_test_data(self, text):
         return int(text)

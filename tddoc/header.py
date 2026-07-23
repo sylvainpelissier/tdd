@@ -1,4 +1,5 @@
 from datetime import date, timedelta
+
 from .c40 import c40
 
 __doc__ = "2D-Doc header representation"
