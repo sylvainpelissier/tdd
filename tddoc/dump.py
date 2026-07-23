@@ -1,8 +1,10 @@
 __doc__ = "2D-Doc dumper helper"
 
-def dump(doc, keychain = None):
-    from .doc import TwoDDoc
+
+def dump(doc, keychain=None):
     from .data_definition import c40
+    from .doc import TwoDDoc
+
     d = TwoDDoc.from_code(doc)
 
     print("Version:", d.header.version)
@@ -35,21 +37,25 @@ def dump(doc, keychain = None):
         except KeyError as e:
             print("Key not found:", e)
 
+
 if __name__ == "__main__":
     import argparse
+
     from .keychain import internal
 
     parser = argparse.ArgumentParser(description="Dump 2D-Doc content")
-    parser.add_argument("files", nargs="+", metavar="code.txt",
-                        help="2D-Doc text files to dump")
-    parser.add_argument("--test-ca", action="store_true",
-                        help="Load FR00 test CA certificate")
+    parser.add_argument(
+        "files", nargs="+", metavar="code.txt", help="2D-Doc text files to dump"
+    )
+    parser.add_argument(
+        "--test-ca", action="store_true", help="Load FR00 test CA certificate"
+    )
     args = parser.parse_args()
 
     keychain = internal(include_test=args.test_ca, check_expiry=not args.test_ca)
 
     for fn in args.files:
-        with open(fn, 'r') as fd:
+        with open(fn, "r") as fd:
             blob = fd.read().strip()
         print(f"{fn}:")
         dump(blob, keychain)

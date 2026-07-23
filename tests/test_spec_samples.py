@@ -6,9 +6,12 @@ These tests verify:
 2. Signature validation passes
 3. Re-encoding produces the same payload (unsigned portion)
 """
-import yaml
+
 from datetime import date, datetime, time
 from pathlib import Path
+
+import yaml
+
 from tddoc.doc import TwoDDoc
 
 
@@ -90,10 +93,14 @@ def test_spec_sample(spec_sample, keychain):
         assert doc.header.sign_date == expected, "sign_date mismatch"
 
     if "doc_type_id" in header_ref:
-        assert doc.header.doc_type_id == header_ref["doc_type_id"], "doc_type_id mismatch"
+        assert doc.header.doc_type_id == header_ref["doc_type_id"], (
+            "doc_type_id mismatch"
+        )
 
     if "perimeter_id" in header_ref:
-        assert doc.header.perimeter_id == header_ref["perimeter_id"], "perimeter_id mismatch"
+        assert doc.header.perimeter_id == header_ref["perimeter_id"], (
+            "perimeter_id mismatch"
+        )
 
     if "country_id" in header_ref:
         assert doc.header.country_id == header_ref["country_id"], "country_id mismatch"
@@ -102,17 +109,25 @@ def test_spec_sample(spec_sample, keychain):
     fields_ref = ref.get("fields", {})
     parsed_fields = {d.definition.id: d for d in doc.message.dataset}
 
-    assert set(fields_ref.keys()) == set(parsed_fields.keys()), "Both ref and parsed do not have the exact same keys"
+    assert set(fields_ref.keys()) == set(parsed_fields.keys()), (
+        "Both ref and parsed do not have the exact same keys"
+    )
 
     for field_id, raw_expected_value in fields_ref.items():
         field = parsed_fields[field_id]
         try:
-            expected_value = field.definition.encoding.from_spec_test_data(raw_expected_value)
+            expected_value = field.definition.encoding.from_spec_test_data(
+                raw_expected_value
+            )
         except Exception as e:
-            raise ValueError(f"Cannot decode field {field_id} encoding {field.definition.encoding.__class__.__name__} from data {raw_expected_value}") from e
+            raise ValueError(
+                f"Cannot decode field {field_id} encoding {field.definition.encoding.__class__.__name__} from data {raw_expected_value}"
+            ) from e
         actual_value = field.value
 
-        assert actual_value == expected_value, f"field {field_id}: expected {expected_value!r}, got {actual_value!r}"
+        assert actual_value == expected_value, (
+            f"field {field_id}: expected {expected_value!r}, got {actual_value!r}"
+        )
 
     # Test signature validation
     if ref.get("signature_valid", True):
@@ -129,5 +144,7 @@ def test_spec_sample(spec_sample, keychain):
         header_code = doc.header.to_code()
 
         # Verify header portion matches
-        original_header = code[:doc.header.length]
-        assert header_code == original_header, f"header re-encoding mismatch: {header_code!r} vs {original_header!r}"
+        original_header = code[: doc.header.length]
+        assert header_code == original_header, (
+            f"header re-encoding mismatch: {header_code!r} vs {original_header!r}"
+        )

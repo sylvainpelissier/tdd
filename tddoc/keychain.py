@@ -1,8 +1,9 @@
-from cryptography import x509
-from cryptography.x509.oid import NameOID
 from datetime import datetime, timezone
 from io import BytesIO
 from pathlib import Path
+
+from cryptography import x509
+from cryptography.x509.oid import NameOID
 
 __doc__ = "Keychain management"
 
@@ -10,15 +11,17 @@ USER_CHAINS_DIR = Path.home() / ".config" / "tddoc" / "chains"
 
 MULTIPART_BOUNDARY = b"--End"
 
+
 class ExpiredCertificateError(Exception):
     """Raised when a certificate has expired or is not yet valid."""
-    pass
+
 
 class KeyChain:
     """
     Certificate store, indexes certificates through common name of
     issuer and subject. This is somehow 2D-Doc specific.
     """
+
     def __init__(self, check_expiry=True):
         self.certs = []
         self.check_expiry = check_expiry
@@ -60,11 +63,13 @@ class KeyChain:
             if now < cert.not_valid_before_utc:
                 raise ExpiredCertificateError(
                     f"Certificate {cert_cn} not yet valid "
-                    f"(valid from {cert.not_valid_before_utc})")
+                    f"(valid from {cert.not_valid_before_utc})"
+                )
             if now > cert.not_valid_after_utc:
                 raise ExpiredCertificateError(
                     f"Certificate {cert_cn} expired "
-                    f"(expired {cert.not_valid_after_utc})")
+                    f"(expired {cert.not_valid_after_utc})"
+                )
 
         return cert
 
@@ -76,15 +81,15 @@ class KeyChain:
         certs = blob.split(boundary)
 
         for c in certs:
-            if c.endswith(b'\r\n'):
+            if c.endswith(b"\r\n"):
                 c = c[:-2]
             if not c:
                 continue
-            header, data = c.split(b'\r\n\r\n', 1)
-            header_lines = header.split(b'\r\n')
+            header, data = c.split(b"\r\n\r\n", 1)
+            header_lines = header.split(b"\r\n")
             ct = None
             for h in header_lines:
-                k, v = str(h, 'utf-8').split(": ", 1)
+                k, v = str(h, "utf-8").split(": ", 1)
                 if k.lower() == "content-type":
                     ct = v
             if ct == "application/pkix-cert":
@@ -93,7 +98,7 @@ class KeyChain:
     def der_add(self, der):
         try:
             cert = x509.load_der_x509_certificate(der)
-        except (ValueError, Exception):
+        except ValueError:
             return
         self.certs.append(cert)
 
@@ -107,10 +112,11 @@ class KeyChain:
     def load_dir(self, directory):
         """Load all .der files from a directory (Path or importlib Traversable)."""
         for entry in sorted(directory.iterdir(), key=lambda e: e.name):
-            if not entry.name.endswith('.der') or not entry.is_file():
+            if not entry.name.endswith(".der") or not entry.is_file():
                 continue
-            with entry.open('rb') as f:
+            with entry.open("rb") as f:
                 self.load_der_blob(f.read())
+
 
 def internal(include_test=False, check_expiry=True):
     """
@@ -123,20 +129,21 @@ def internal(include_test=False, check_expiry=True):
     from importlib.resources import files
 
     k = KeyChain(check_expiry=check_expiry)
-    chains = files('tddoc.chains')
+    chains = files("tddoc.chains")
 
     for entry in sorted(chains.iterdir(), key=lambda e: e.name):
-        if not entry.name.endswith('.der') or not entry.is_file():
+        if not entry.name.endswith(".der") or not entry.is_file():
             continue
-        if not include_test and entry.name.startswith('FR00'):
+        if not include_test and entry.name.startswith("FR00"):
             continue
-        with entry.open('rb') as f:
+        with entry.open("rb") as f:
             k.load_der_blob(f.read())
 
     if USER_CHAINS_DIR.is_dir():
         k.load_dir(USER_CHAINS_DIR)
 
     return k
+
 
 if __name__ == "__main__":
     import sys

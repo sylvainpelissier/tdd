@@ -1,7 +1,8 @@
 __doc__ = "C40 codec"
 
 # Just arbitrarily map FNC1 to u0080
-fnc1 = '\x80'
+fnc1 = "\x80"
+
 
 class Codec:
     def __init__(self, sets):
@@ -30,9 +31,9 @@ class Codec:
     def unpack(s):
         c = []
         for v in s:
-            c1 = (v-1) // 1600
-            c2 = ((v-1) // 40) % 40
-            c3 = (v-1) % 40
+            c1 = (v - 1) // 1600
+            c2 = ((v - 1) // 40) % 40
+            c3 = (v - 1) % 40
 
             c.append(c1)
             c.append(c2)
@@ -44,7 +45,7 @@ class Codec:
         lock = False
         s = 0
 
-        ret = ''
+        ret = ""
         for c in cs:
             if s == 0 and c <= 2:
                 s = c + 1
@@ -54,7 +55,7 @@ class Codec:
                 s = 0
             try:
                 ret += sets[s][c]
-            except:
+            except KeyError:
                 raise ValueError("Bad encoding")
             if not lock:
                 s = 0
@@ -74,7 +75,7 @@ class Codec:
             set, code = mapping[c]
             if s != set:
                 if s == 0:
-                    ret.append(set-1)
+                    ret.append(set - 1)
                 else:
                     raise ValueError("Cannot encode", set, c)
             ret.append(code)
@@ -95,19 +96,20 @@ class Codec:
 
     @staticmethod
     def stream_format(cw):
-        return b''.join(x.to_bytes(2, "big") for x in cw)
+        return b"".join(x.to_bytes(2, "big") for x in cw)
 
     def format(self, text):
         cs = self.text_encode(text, self.reverse)
         cw = self.pack(cs)
         return self.stream_format(cw)
 
-set0_c40 = {(i+3):v for (i, v) in enumerate(" 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ")}
-set0_text = {k:v.lower() for (k, v) in set0_c40.items()}
-set1 = {i:chr(i) for i in range(32)}
-set2 = {i:v for (i, v) in enumerate("!\"#$%&'()*+,-./:;<=>?@[\\]^_"+fnc1)}
-set3_c40 = {i:v for (i, v) in enumerate("`abcdefghijklmnopqrstuvwxyz{|}~\x7f")}
-set3_text = {k:v.upper() for (k, v) in set3_c40.items()}
+
+set0_c40 = {(i + 3): v for (i, v) in enumerate(" 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ")}
+set0_text = {k: v.lower() for (k, v) in set0_c40.items()}
+set1 = {i: chr(i) for i in range(32)}
+set2 = {i: v for (i, v) in enumerate("!\"#$%&'()*+,-./:;<=>?@[\\]^_" + fnc1)}
+set3_c40 = {i: v for (i, v) in enumerate("`abcdefghijklmnopqrstuvwxyz{|}~\x7f")}
+set3_text = {k: v.upper() for (k, v) in set3_c40.items()}
 
 # Define both C40 and Text mode, even if this project only uses C40.
 c40 = Codec([set0_c40, set1, set2, set3_c40])

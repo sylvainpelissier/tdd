@@ -1,8 +1,14 @@
-name: Run Unit Test via Pytest  
+name: Unit tests and linter 
   
 on: [push]  
   
-jobs:  
+jobs: 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/ruff-action@v4.0.0
+      
   build:  
     runs-on: ubuntu-latest  
     strategy:  

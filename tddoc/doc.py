@@ -1,24 +1,24 @@
-from .header import Header
-from .message import C40Message
 from base64 import b32decode
+
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.primitives.asymmetric.utils import encode_dss_signature
 
+from .header import Header
+from .message import C40Message
+
 __doc__ = """
 Documentation representation.
 """
+
 
 class TwoDDoc:
     """
     A 2D-Doc document
     """
-    def __init__(self,
-                 header, message,
-                 signature,
-                 signed_data = None,
-                 extra = None):
+
+    def __init__(self, header, message, signature, signed_data=None, extra=None):
         self.header = header
         self.message = message
         self.signature = signature
@@ -32,15 +32,14 @@ class TwoDDoc:
         """
         header = Header.from_code(doc)
         if header.mode == "c40":
-            data, sign = doc[header.length:].split('\x1f', 1)
-            signature = b32decode(sign+"=")
+            data, sign = doc[header.length :].split("\x1f", 1)
+            signature = b32decode(sign + "=")
             message = C40Message.from_code(header.perimeter_id, data)
-            signed_data = (doc[:header.length]+data).encode("ascii")
+            signed_data = (doc[: header.length] + data).encode("ascii")
         else:
             raise ValueError("Binary code not supported fully yet")
 
-        return cls(header, message, signature,
-                   signed_data = signed_data)
+        return cls(header, message, signature, signed_data=signed_data)
 
     def signature_is_valid(self, keychain):
         """
@@ -52,7 +51,9 @@ class TwoDDoc:
         s = int.from_bytes(self.signature[32:], "big")
         dss_sig = encode_dss_signature(r, s)
         try:
-            cert.public_key().verify(dss_sig, self.signed_data, ec.ECDSA(hashes.SHA256()))
+            cert.public_key().verify(
+                dss_sig, self.signed_data, ec.ECDSA(hashes.SHA256())
+            )
         except InvalidSignature:
             return False
         return True
