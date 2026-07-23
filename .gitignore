@@ -1,4 +1,5 @@
 __pycache__
+dist
 .pytest_cache
 samples-priv
 *.egg-info
