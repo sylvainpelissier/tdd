@@ -847,7 +847,7 @@ wheels = [
 ]
 
 [[package]]
-name = "tdd"
+name = "tddoc"
 version = "0.3"
 source = { editable = "." }
 dependencies = [
@@ -879,7 +879,7 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'" },
     { name = "pyyaml", marker = "extra == 'dev'" },
     { name = "requests", marker = "extra == 'fetch'" },
-    { name = "tdd", extras = ["fetch"], marker = "extra == 'dev'" },
+    { name = "tddoc", extras = ["fetch"], marker = "extra == 'dev'" },
     { name = "xmlsec", marker = "extra == 'fetch'" },
 ]
 provides-extras = ["fetch", "dev"]

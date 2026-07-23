@@ -1,4 +1,4 @@
-from tdd.message import C40Message
+from tddoc.message import C40Message
 
 
 def test_numeric_client_number_is_not_reparsed_as_phantom_field():

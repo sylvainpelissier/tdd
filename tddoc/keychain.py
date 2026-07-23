@@ -6,7 +6,7 @@ from pathlib import Path
 
 __doc__ = "Keychain management"
 
-USER_CHAINS_DIR = Path.home() / ".config" / "tdd" / "chains"
+USER_CHAINS_DIR = Path.home() / ".config" / "tddoc" / "chains"
 
 MULTIPART_BOUNDARY = b"--End"
 
@@ -115,7 +115,7 @@ class KeyChain:
 def internal(include_test=False, check_expiry=True):
     """
     Spawn a keychain with all built-in certificates loaded,
-    then load any user-provisioned certificates from ~/.config/tdd/chains/.
+    then load any user-provisioned certificates from ~/.config/tddoc/chains/.
 
     If include_test is True, also load the FR00 test/spec CA certificate.
     If check_expiry is False, skip validity period checks on lookup.
@@ -123,7 +123,7 @@ def internal(include_test=False, check_expiry=True):
     from importlib.resources import files
 
     k = KeyChain(check_expiry=check_expiry)
-    chains = files('tdd.chains')
+    chains = files('tddoc.chains')
 
     for entry in sorted(chains.iterdir(), key=lambda e: e.name):
         if not entry.name.endswith('.der') or not entry.is_file():

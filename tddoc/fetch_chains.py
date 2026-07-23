@@ -2,15 +2,15 @@
 Certificate chain downloader for 2D-Doc.
 
 Usage:
-    python -m tdd.fetch_chains [-o DIR] [CA_NAME ...]
+    python -m tddoc.fetch_chains [-o DIR] [CA_NAME ...]
 
 Downloads certificate chains from the ANTS TSL (Trust Service List)
 and saves individual DER files.
 
 If the TSL is outdated a the new TSL is dowloaded and its signature is verified.
 
-Default output: ~/.config/tdd/chains/
-Use -o tdd/chains to update the bundled certificates.
+Default output: ~/.config/tddoc/chains/
+Use -o tddoc/chains to update the bundled certificates.
 If no CA names are specified, downloads all available chains.
 """
 
@@ -39,20 +39,20 @@ import xmlsec
 
 TSL_NS = {"tsl": "http://uri.etsi.org/02231/v2#"}
 TSL_DS = {"ds": "http://www.w3.org/2000/09/xmldsig#"}
-HEADERS = {'User-Agent': 'tdd'}
+HEADERS = {'User-Agent': 'tddoc'}
 TSL_URL = "https://pub.ants.gouv.fr/2D-DOC/V1/PRD/01_TSL/tsl_signed.xml"
 TSL_ROOT = "ca_racine_antsav3_2.cer"
 
 class ChainFetcher:
     def __init__(self, output_dir=None):
         if output_dir is None:
-            output_dir = Path.home() / ".config" / "tdd" / "chains"
+            output_dir = Path.home() / ".config" / "tddoc" / "chains"
         self.output_dir = Path(output_dir)
         self.tree = None
 
     def _load_tsl(self):
         if self.tree is None:
-            tsl_path = files('tdd.tsl').joinpath("tsl_signed.xml")
+            tsl_path = files('tddoc.tsl').joinpath("tsl_signed.xml")
             with tsl_path.open("rb") as f:
                 self.tree = etree.parse(f)
         return self.tree
@@ -99,7 +99,7 @@ class ChainFetcher:
         ctx.verify(xmlsec.tree.find_node(tree, xmlsec.constants.NodeSignature))
 
         root = x509.load_der_x509_certificate(
-            files('tdd.tsl').joinpath(TSL_ROOT).read_bytes()
+            files('tddoc.tsl').joinpath(TSL_ROOT).read_bytes()
         )
         intermediate = x509.load_der_x509_certificate(
             self._get(self._aia_ca_issuers(leaf))
@@ -140,7 +140,7 @@ class ChainFetcher:
         subject_cn = leaf.subject.get_attributes_for_oid(NameOID.COMMON_NAME)[0].value
         print(f"TSL signature verified, signed by {subject_cn!r}")
 
-        tsl_path = Path(str(files('tdd.tsl').joinpath("tsl_signed.xml")))
+        tsl_path = Path(str(files('tddoc.tsl').joinpath("tsl_signed.xml")))
         tsl_path.write_bytes(data)
         self.tree = None
         print(f"Updated {tsl_path} to version {latest_version}")
@@ -256,7 +256,7 @@ def main(args=None):
         "-o", "--output-dir",
         type=Path,
         default=None,
-        help="Output directory (default: ~/.config/tdd/chains/)",
+        help="Output directory (default: ~/.config/tddoc/chains/)",
     )
     parser.add_argument(
         "ca_names",

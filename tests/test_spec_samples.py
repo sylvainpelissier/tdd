@@ -9,8 +9,7 @@ These tests verify:
 import yaml
 from datetime import date, datetime, time
 from pathlib import Path
-
-from tdd.doc import TwoDDoc
+from tddoc.doc import TwoDDoc
 
 
 def load_reference(yaml_path: Path) -> dict:

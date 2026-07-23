@@ -9,8 +9,7 @@ from pathlib import Path
 
 from cryptography import x509
 from cryptography.x509.oid import NameOID
-
-from tdd.fetch_chains import ChainFetcher, TSL_DS
+from tddoc.fetch_chains import ChainFetcher, TSL_DS
 
 # The intermediate certificate that verify_tsl would otherwise fetch over the
 # network from the leaf's AIA caIssuers URL, bundled so the tests stay offline.
@@ -20,7 +19,7 @@ INTERMEDIATE = Path(__file__).parent / "tsl_fixtures" / "intermediate.cer"
 @pytest.fixture
 def tsl_data():
     """The bundled, correctly signed TSL as raw bytes."""
-    return files("tdd.tsl").joinpath("tsl_signed.xml").read_bytes()
+    return files("tddoc.tsl").joinpath("tsl_signed.xml").read_bytes()
 
 
 @pytest.fixture
