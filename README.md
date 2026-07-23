@@ -80,7 +80,3 @@ $ python setup.py fetch_chains
 * Support for "binary" V4 messages
   * And support for V4 ancillary data
 
-## License
-
-MIT.
-
