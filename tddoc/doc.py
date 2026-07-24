@@ -47,8 +47,9 @@ class TwoDDoc:
         available, KeyError is raised.
         """
         cert = keychain.lookup(self.header.ca_id, self.header.cert_id)
-        r = int.from_bytes(self.signature[:32], "big")
-        s = int.from_bytes(self.signature[32:], "big")
+        sig_len = len(self.signature) // 2
+        r = int.from_bytes(self.signature[:sig_len], "big")
+        s = int.from_bytes(self.signature[sig_len:], "big")
         dss_sig = encode_dss_signature(r, s)
         try:
             cert.public_key().verify(

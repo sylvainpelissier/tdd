@@ -15,7 +15,7 @@ def date_parse_text(code):
 
 
 def date_parse_bin(code):
-    if code == b"FFFF":
+    if code == b"\xff\xff\xff":
         return None
     v = int.from_bytes(code, "big")
     return date(year=v % 10000, month=v // 1000000, day=(v // 10000) % 100)
