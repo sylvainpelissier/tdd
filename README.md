@@ -70,7 +70,7 @@ This downloads chains to ``~/.config/tddoc/chains/``, which are automatically lo
 To update the bundled chains shipped with the package (for maintainers):
 
 ```shell
-$ python setup.py fetch_chains
+$ python -m tddoc.fetch_chains
 ```
 
 ## TODO
