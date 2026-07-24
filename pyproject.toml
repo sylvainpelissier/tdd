@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "tddoc"
-version = "0.3"
+version = "0.3.0"
 description = "2D-Doc toolsuite"
 readme = "README.md"
 license = "MIT"

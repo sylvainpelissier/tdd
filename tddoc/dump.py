@@ -38,7 +38,7 @@ def dump(doc, keychain=None):
             print("Key not found:", e)
 
 
-if __name__ == "__main__":
+def main(args=None):
     import argparse
 
     from .keychain import internal
@@ -50,13 +50,17 @@ if __name__ == "__main__":
     parser.add_argument(
         "--test-ca", action="store_true", help="Load FR00 test CA certificate"
     )
-    args = parser.parse_args()
+    parsed = parser.parse_args(args)
 
-    keychain = internal(include_test=args.test_ca, check_expiry=not args.test_ca)
+    keychain = internal(include_test=parsed.test_ca, check_expiry=not parsed.test_ca)
 
-    for fn in args.files:
+    for fn in parsed.files:
         with open(fn, "r") as fd:
             blob = fd.read().strip()
         print(f"{fn}:")
         dump(blob, keychain)
         print()
+
+
+if __name__ == "__main__":
+    main()
