@@ -2,6 +2,16 @@
 
 This is a [2D-DOC](https://ants.gouv.fr/Les-solutions/2D-Doc) parser library. It is able to decode and pretty-print a 2D-Doc as defined by French ANTS, and is also able to verify signature.
 
+## Installing
+
+tddoc is hosted on [PyPI](https://pypi.org/project/tddoc/), and can be installed using pip:
+
+```bash
+pip install tddoc
+```
+
+PyHanko requires Python 3.9 or later.
+
 ## Usage
 
 ### Dumper
